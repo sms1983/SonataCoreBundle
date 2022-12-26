@@ -15,6 +15,7 @@ namespace Sonata\CoreBundle\Form\Type;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Sonata\Form\Type\DatePickerType;
 
 /**
  * @deprecated since sonata-project/core-bundle 3.13.0, to be removed in 4.0.

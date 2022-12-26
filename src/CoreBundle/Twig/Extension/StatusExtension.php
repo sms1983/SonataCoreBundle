@@ -47,7 +47,7 @@ class StatusExtension extends BaseStatusExtension
         $this->statusServices[] = $renderer;
     }
 
-    public function getFilters()
+    public function getFilters(): array
     {
         if (!empty($this->statusServices)) {
             return [
@@ -87,7 +87,7 @@ class StatusExtension extends BaseStatusExtension
         return $default;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return 'sonata_core_status';
     }

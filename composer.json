@@ -1,7 +1,7 @@
 {
     "name": "sonata-project/core-bundle",
     "type": "symfony-bundle",
-    "description": "Symfony SonataCoreBundle",
+    "description": "Symfony SonataCoreBundle (abandoned)",
     "keywords": [
         "sonata"
     ],
@@ -79,5 +79,6 @@
             "Sonata\\CoreBundle\\Tests\\": "tests/CoreBundle/",
             "Sonata\\Serializer\\Tests\\": "tests/Serializer/"
         }
-    }
+    },
+    "abandoned": true
 }

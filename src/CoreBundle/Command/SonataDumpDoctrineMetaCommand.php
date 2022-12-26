@@ -16,26 +16,18 @@ namespace Sonata\CoreBundle\Command;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Gaufrette\Adapter\Local as LocalAdapter;
 use Gaufrette\Filesystem;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Doctrine\ORM\EntityManagerInterface;
-use PSR\Log\LoggerInterface;
+use Sonata\CoreBundle\Command\ContainerAwareCommand;
 
 /**
  * Return useful data on the database schema.
  *
  * @deprecated since sonata-project/core-bundle 3.12.0, to be removed in 4.0.
  */
-class SonataDumpDoctrineMetaCommand extends Command
+class SonataDumpDoctrineMetaCommand extends ContainerAwareCommand
 {
-    public function __construct(EntityManagerInterface $manager, LoggerInterface $logger)
-    {
-        $this->manager = $manager;
-        $this->logger = $logger;
-    }
-
     /**
      * @var array
      */
@@ -80,7 +72,8 @@ class SonataDumpDoctrineMetaCommand extends Command
         );
 
         $output->writeln('Initialising Doctrine metadata.');
-        $metadata = $this->manager->getMetadataFactory()->getAllMetadata();
+        $manager = $this->getContainer()->get('doctrine')->getManager();
+        $metadata = $manager->getMetadataFactory()->getAllMetadata();
 
         $allowedMeta = $this->filterMetadata($metadata, $input, $output);
 

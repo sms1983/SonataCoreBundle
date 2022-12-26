@@ -13,25 +13,17 @@ declare(strict_types=1);
 
 namespace Sonata\CoreBundle\Command;
 
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\HttpKernel\Kernel;
-use Doctrine\ORM\EntityManagerInterface;
-use PSR\Log\LoggerInterface;
+use Sonata\CoreBundle\Command\ContainerAwareCommand;
 
 /**
  * @deprecated since sonata-project/core-bundle 3.7, to be removed in 4.0, the form mapping feature should be disabled.
  */
-class SonataListFormMappingCommand extends Command
+class SonataListFormMappingCommand extends ContainerAwareCommand
 {
-    public function __construct(EntityManagerInterface $manager, LoggerInterface $logger)
-    {
-        $this->manager = $manager;
-        $this->logger = $logger;
-    }
-
     /**
      * @var array
      */
@@ -60,9 +52,9 @@ class SonataListFormMappingCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $output->writeln('Getting form types:');
-        foreach ($this->manager->getParameter('sonata.core.form.types') as $id) {
+        foreach ($this->getContainer()->getParameter('sonata.core.form.types') as $id) {
             try {
-                $instance = $this->manager->get($id);
+                $instance = $this->getContainer()->get($id);
 
                 if ('yaml' === $input->getOption('format')) {
                     $output->writeln(sprintf('              %s: %s', $instance->getName(), \get_class($instance)));
@@ -76,9 +68,9 @@ class SonataListFormMappingCommand extends Command
 
         $output->writeln("\n\n\nGetting form type extensions:");
         $types = [];
-        foreach ($this->manager->getParameter('sonata.core.form.type_extensions') as $id) {
+        foreach ($this->getContainer()->getParameter('sonata.core.form.type_extensions') as $id) {
             try {
-                $instance = $this->manager->get($id);
+                $instance = $this->getContainer()->get($id);
                 if (!isset($types[$instance->getExtendedType()])) {
                     $types[$instance->getExtendedType()] = [];
                 }
