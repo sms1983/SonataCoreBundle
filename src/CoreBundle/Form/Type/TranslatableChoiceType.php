@@ -39,14 +39,14 @@ class TranslatableChoiceType extends AbstractType
         $this->translator = $translator;
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'catalogue' => 'messages',
         ]);
     }
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         @trigger_error(
             sprintf(

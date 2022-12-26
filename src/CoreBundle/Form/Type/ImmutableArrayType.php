@@ -20,7 +20,7 @@ use Symfony\Component\Form\FormBuilderInterface;
  */
 class ImmutableArrayType extends \Sonata\Form\Type\ImmutableArrayType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         @trigger_error(
             'The '.__NAMESPACE__.'\ImmutableArrayType class is deprecated since version 3.13.0 and will be removed in 4.0.'

@@ -24,7 +24,7 @@ use Symfony\Component\Form\FormBuilderInterface;
  */
 final class ColorType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         if (class_exists('Symfony\Component\Form\Extension\Core\Type\ColorType')) {
             @trigger_error(

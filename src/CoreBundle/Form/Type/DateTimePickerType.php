@@ -22,7 +22,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class DateTimePickerType extends \Sonata\Form\Type\DateTimePickerType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         @trigger_error(
             'The '.__NAMESPACE__.'\DateTimePickerType class is deprecated since version 3.13.0 and will be removed in 4.0.'
@@ -38,7 +38,7 @@ class DateTimePickerType extends \Sonata\Form\Type\DateTimePickerType
         return 'sonata_type_datetime_picker_legacy';
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults(array_merge($this->getCommonDefaults(), [
             'dp_use_minutes' => true,

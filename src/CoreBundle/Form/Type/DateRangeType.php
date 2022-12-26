@@ -20,7 +20,7 @@ use Symfony\Component\Form\FormBuilderInterface;
  */
 class DateRangeType extends \Sonata\Form\Type\DateRangeType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         @trigger_error(
             'The '.__NAMESPACE__.'\DateRangeType class is deprecated since version 3.13.0 and will be removed in 4.0.'

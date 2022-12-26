@@ -21,7 +21,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class EqualType extends \Sonata\Form\Type\EqualType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         @trigger_error(
             'The '.__NAMESPACE__.'\EqualType class is deprecated since version 3.13.0 and will be removed in 4.0.'
@@ -37,7 +37,7 @@ class EqualType extends \Sonata\Form\Type\EqualType
         return 'sonata_type_equal_legacy';
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $defaultOptions = [
             'choice_translation_domain' => 'SonataCoreBundle',

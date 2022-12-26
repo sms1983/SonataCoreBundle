@@ -22,7 +22,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class DateTimeRangeType extends \Sonata\Form\Type\DateTimeRangeType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         @trigger_error(
             'The '.__NAMESPACE__.'\DateTimeRangeType class is deprecated since version 3.13.0 and will be removed in 4.0.'
@@ -38,7 +38,7 @@ class DateTimeRangeType extends \Sonata\Form\Type\DateTimeRangeType
         return 'sonata_type_datetime_range_legacy';
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'field_options' => [],
